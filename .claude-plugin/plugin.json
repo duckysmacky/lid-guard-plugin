@@ -1,0 +1,17 @@
+{
+  "name": "lid-guard",
+  "version": "1.0.0",
+  "description": "Keeps a Linux laptop awake with the lid closed while an AI coding agent works, using a systemd-logind inhibitor lock. Modes: off, task, session.",
+  "author": {
+    "name": "duckysmacky"
+  },
+  "keywords": [
+    "systemd",
+    "logind",
+    "suspend",
+    "lid",
+    "hooks",
+    "linux"
+  ],
+  "types": "./types/index.d.ts"
+}

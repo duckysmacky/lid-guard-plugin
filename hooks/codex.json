@@ -1,0 +1,60 @@
+{
+  "description": "Hold a logind sleep/lid-switch inhibitor while the agent is working (mode: ~/.codex/lid-guard-mode)",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${PLUGIN_ROOT}/skills/lid-guard/scripts/lid-guard.sh\" --agent codex acquire",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${PLUGIN_ROOT}/skills/lid-guard/scripts/lid-guard.sh\" --agent codex acquire",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${PLUGIN_ROOT}/skills/lid-guard/scripts/lid-guard.sh\" --agent codex release --on-stop",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Interrupt": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${PLUGIN_ROOT}/skills/lid-guard/scripts/lid-guard.sh\" --agent codex release --on-stop",
+            "timeout": 1
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${PLUGIN_ROOT}/skills/lid-guard/scripts/lid-guard.sh\" --agent codex release",
+            "timeout": 1
+          }
+        ]
+      }
+    ]
+  }
+}
